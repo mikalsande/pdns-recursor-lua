@@ -36,10 +36,10 @@ Send a pull request if you feel like it. This is just a repo for Lua filter exam
 
 ## Links
 These examples were not written in a vacuum, here are links to documentation and other examples. Please let me know if there are any I have missed.
-[Scripting the recursor](https://doc.powerdns.com/md/recursor/scripting/)
-[PowerDNS Wiki Lua Examples](https://github.com/PowerDNS/pdns/wiki/Lua-Examples-(Recursor))
-[Efficient & optional filtering of domains in Recursor 4.0.0](https://blog.powerdns.com/2016/01/19/efficient-optional-filtering-of-domains-in-recursor-4-0-0/)
-[Per device DNS settings: selective parental control](https://blog.powerdns.com/2016/01/27/per-device-dns-settings-selective-parental-control/)
+* [Scripting the recursor](https://doc.powerdns.com/md/recursor/scripting/)
+* [PowerDNS Wiki Lua Examples](https://github.com/PowerDNS/pdns/wiki/Lua-Examples-(Recursor))
+* [Efficient & optional filtering of domains in Recursor 4.0.0](https://blog.powerdns.com/2016/01/19/efficient-optional-filtering-of-domains-in-recursor-4-0-0/)
+* [Per device DNS settings: selective parental control](https://blog.powerdns.com/2016/01/27/per-device-dns-settings-selective-parental-control/)
 
 ## Authors
 See the list of [contributors](https://github.com/mikalsande/pdns-recursor-lua/graphs/contributors) who participated in this project.
