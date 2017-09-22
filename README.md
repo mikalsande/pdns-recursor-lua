@@ -28,7 +28,7 @@ This script requires two Bloom filters, one standard and one counting. I impleme
 TODO - Add a reset for the filters when they reach capacity.
 TODO - Add a reset based on absolute time. The counting filter should not live too long (5 minutes?) and the boolean filter should probably get to live a bit longer (1 hour?).
 
-## Running the tests
+## Tests
 No tests yet, need to figure out a good solution for unit testing these Lua scripts and or functionality testing PowerDNS with the Lua scripts.
 
 ## Contributing
