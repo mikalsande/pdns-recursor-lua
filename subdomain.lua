@@ -1,8 +1,8 @@
-local bloombits = require "bloombool"
-local bloomcount = require "bloomcount"
+local bloom = require("bloom")
+local countmin = require("countmin")
 
-local preout_blockfilter = bloombits.new(100000, 0.0001) -- boolean bloom filter
-local countfilter = bloomcount.new(100000, 0.0001, 8) -- counting bloom filter
+local preout_blockfilter = bloombits.new(100000, 0.0001)
+local countfilter = bloomcount.new(1 / 10000, 0.0001)
 local max_nx_count = 200 -- max number of NXDOMAIN for domain+IP before we block
 
 function preoutquery(dq)

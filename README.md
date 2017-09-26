@@ -21,12 +21,12 @@ This could also be implemented with gettag() at the cost of doing Lua for each i
 Makes all RRsets with 2 or more resources in the answer section of a response skip the packet cache. The effect is that the responses from the RRset are answered from the recursor cache and rotated.
 
 ### subdomain.lua
-An example implementation of a countermeasure for the random subdomain attack. It uses two Bloom filters to track (client IP + domain) pairs. When the NXDOMAIN count for a (client IP + domain) pair goes over a certain threshold the client IP is blocked from generating outbound queries for the domain.
+An example implementation of a countermeasure for the random subdomain attack. It uses a count-min sketch to track counts of (client IP + domain) pairs. When the NXDOMAIN count for a (client IP + domain) pair goes over a certain threshold the client IP is blocked from generating outbound queries for the specific domain. We do this by adding the (client IP + domain) to a Bloom filter that we check in the preoutquery() Lua hook.
 
-This script requires two Bloom filters, one standard and one counting. I implemented the two [Bloom filters](https://github.com/mikalsande/lua-bloom-count) myself because I couldn't find a ready to use Bloom filter written in Lua that suited this purpose. The script should work with any other Bloom filter with a couble of lines change.
+This script uses a Bloom filter and a Count-min sketch. Both datastructures were chosen for this usecase because they use constant space and O(1) query and update. Maybe a bit overengineered, but at least it should scale well. I implemented the [bloom filter](https://github.com/mikalsande/lua-simple-bloom) and [count-min sketch](https://github.com/mikalsande/lua-count-min) myself. The script should work with any other Bloom filter and Count-min sketch by changing a few lines.
 
-TODO - Add a reset for the filters when they reach capacity.
-TODO - Add a reset based on absolute time. The counting filter should not live too long (5 minutes?) and the boolean filter should probably get to live a bit longer (1 hour?).
+TODO - Add a reset for the filter when it reaches capacity or the counter accumulates too much error.
+TODO - Add a reset based on absolute time. The count-min sketch should not live too long (5-10 minutes?) and the bloom filter should probably get to live a bit longer (1 hour?).
 
 ## Tests
 No tests yet, need to figure out a good solution for unit testing these Lua scripts and or functionality testing PowerDNS with the Lua scripts.
